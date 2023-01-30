@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 
 import { tokens } from "../../theme";
 
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import 'react-pro-sidebar/dist/css/styles.css';
+import "react-pro-sidebar/dist/css/styles.css";
 
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -19,7 +19,7 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
-const Item = ({ title, to, icon, selected,setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     return(
@@ -83,6 +83,25 @@ const Sidebar = () => {
                             </Box>
                         )}
                 </MenuItem>
+                {/* User */}
+                {!isCollapsed && (
+                    <Box mb="25px">
+                        <Box display="flex" justifyContent="center" alignItems="center">
+                            <img
+                                alt="profile-ser"
+                                width="100px"
+                                height="100px"
+                                source={`../../public/assets/user.png`}
+                                style={{ cursor: "pointer", borderRadius:"50%"}}
+                             />
+                        </Box>
+
+                        <Box textAlign="center">
+                            <Typography variant="h2" color={colors.grey[100]} fontWeight="bold" sx={{ m: "10px 0 0 0"}}>Nathan Pinaffi</Typography>
+                            <Typography variant="h5" color={colors.greenAccent[500]}>Full Dashboard</Typography>
+                        </Box>
+                    </Box>
+                )}
             </Menu>
         </ProSidebar>
 
